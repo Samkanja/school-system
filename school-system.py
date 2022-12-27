@@ -1,19 +1,32 @@
-from typing import *
-from dataclasses import dataclass
+from typing import List
+from dataclasses import dataclass,field
+
+
+@dataclass
+class Address:
+    country:str
+    county:str
+    city:str
+    street_address:str
+    postal_code:str
+
 
 @dataclass
 class Person:
-    name:str
+    first_name:str
+    last_name:str
     phone_number: int
-    address: str
     age: int
+    address: List[Address] = field(default_factory=list)
 
-@dataclass(_cls)
+
+@dataclass
 class Professor:
     person : Person
     
 
 
-
-p = Person('kanja',487848,'kimathi street',30)
+address = Address('Kenya','Nairobi','Nairobi','8485874','9838948')
+address1 = Address('Kenya','Mombasa','Mombasa','Nyali','88485948')
+p = Person('kanja','samuel',487848,30,[address,address1])
 print(p)
